@@ -80,12 +80,10 @@ class TaxonomyFilterPlugin extends Plugin
      */
     public function isOnRoute(): bool
     {
-        $uri = $this->grav['uri'];
         $lang = $this->grav['language']->getActive();
 
-        $path = $this->grav['uri']->path();
+        $path = $this->grav['uri']->rootUrl() ?: '/';
         $routes = $this->config->get('plugins.' . $this->name . '.routes');
-
 
         foreach ($routes as $route) {
             ['blog' => $blog, 'items' => $items] = $route;
